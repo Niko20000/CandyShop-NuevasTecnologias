@@ -1,22 +1,36 @@
 package com.shop.candy.models;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import lombok.Data;
+import jakarta.persistence.Table;
+import lombok.NoArgsConstructor;
 
+
+
+
+@NoArgsConstructor
+@Table(name = "Clientes")
 @Entity
-@Data
+public class Clientes extends Homosapience {
 
-public class Clientes {
-    
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-    private String nombre;
-    private String email;
-    private String telefono;
-    private int edad;
-    private String ciudad;
+    @Column(name = "genero", nullable = false, length = 100)
+    private String genero;
+
+    public Clientes(String genero) {
+        this.genero = genero;
+    }
+
+    public Clientes(String nombre, String apellido, String direccion, String genero) {
+        super(nombre, apellido, direccion);
+        this.genero = genero;
+    }
+
+    public String getGenero() {
+        return genero;
+    }
+
+    public void setGenero(String genero) {
+        this.genero = genero;
+    }
 
 }
